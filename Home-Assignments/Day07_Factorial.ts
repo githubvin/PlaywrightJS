@@ -31,3 +31,19 @@ function factorial(n: number): number {
     return result; 
 } 
 console.log(factorial(4)); 
+
+
+
+// Another way of implementation 
+function factorialAnother(n: number): number { 
+    if (n < 0) {
+        console.log("Enter a number non-negative and greater than 0.");
+        
+    }
+    let result = 1; 
+    for (let j = 1; j <= n; j++) {
+        result = result * j; 
+    } 
+    return result; 
+} 
+console.log(factorialAnother(-2)); 
