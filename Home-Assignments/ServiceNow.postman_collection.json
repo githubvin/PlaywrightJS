@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "d6476d7c-c614-4007-8331-1b1ff283ca78",
+		"name": "ServiceNow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35999192"
+	},
+	"item": [
+		{
+			"name": "Change_Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"var res = pm.response.json(); \r",
+							"\r",
+							"var changeReqId = res.result.sys_id; // sys_id is unique in the response. \r",
+							"\r",
+							"pm.globals.set(\"changeReqId\", changeReqId); // Global variable setting \r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"Change Request created from Postman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{snowUrl}}/api/now/table/change_request",
+					"host": [
+						"{{snowUrl}}"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"change_request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_one_Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{snowUrl}}/api/now/table/change_request/{{changeReqId}}",
+					"host": [
+						"{{snowUrl}}"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"change_request",
+						"{{changeReqId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update_Change_Request",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"Change Request is updated via Postman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{snowUrl}}/api/now/table/change_request/{{changeReqId}}",
+					"host": [
+						"{{snowUrl}}"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"change_request",
+						"{{changeReqId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete_Change_Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{snowUrl}}/api/now/table/change_request/{{changeReqId}}",
+					"host": [
+						"{{snowUrl}}"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"change_request",
+						"{{changeReqId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{snowPwd}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
